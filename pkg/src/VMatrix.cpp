@@ -13,7 +13,8 @@ void VMatrix::Idealize( double bottom )
 			// for (unsigned j=0; j<nColumns; j++)
 			if((int)data[i].size() < nColumns)
 			{
-				cout << "row " << i << " has less columns " << data[i].size() << endl;
+//				cout << "row " << i << " has less columns " << data[i].size() << endl;
+                ;
 			}
 			for (unsigned j=0; j<data[i].size(); j++)
 			{

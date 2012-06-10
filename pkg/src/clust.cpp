@@ -3,6 +3,7 @@
 #include "muscle.h"
 // #include "clustset.h"
 #include "clust.h"
+#include "R.h"           // R functions
 
 using namespace std;
 
@@ -61,15 +62,23 @@ void Clust::Create(ClustSet &Set, CLUSTER Method)
 		break;
 
 	default:
-		cout << "Clust::Create, invalid method " << Method << endl;
-		exit (-1);
+//		cout << "Clust::Create, invalid method " << Method << endl;
+//		exit (-1);
+Rprintf("Clust::Create, invalid method\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return;	
 		// Quit("Clust::Create, invalid method %d", Method);
 	}
 
 	if (m_uLeafCount <= 1)
 	{
-		cout << "Clust::Create, no leaves" << endl;
-		exit (-1);
+Rprintf("Clust::Create, no leaves\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return;
+//		cout << "Clust::Create, no leaves" << endl;
+//		exit (-1);
 	}
 	// Quit("Clust::Create: no leaves");
 
@@ -215,8 +224,12 @@ void Clust::ChooseJoin(unsigned *ptruLeftIndex, unsigned *ptruRightIndex,
 		  ptrdRightLength);
 		return;
 		}
-	cout << "Clust::ChooseJoin, Invalid join style " << m_JoinStyle << endl;
-	exit(-1);
+Rprintf("Clust::ChooseJoin, Invalid join style\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return;
+//	cout << "Clust::ChooseJoin, Invalid join style " << m_JoinStyle << endl;
+//	exit(-1);
 	// Quit("Clust::ChooseJoin, Invalid join style %u", m_JoinStyle);
 	}
 
@@ -342,9 +355,12 @@ double Clust::ComputeDist(unsigned uNewNodeIndex, unsigned uNodeIndex)
 	case LINKAGE_NeighborJoining:
 		return ComputeDistNeighborJoining(uNewNodeIndex, uNodeIndex);
 		}
-
-	cout << "Clust::ComputeDist, invalid centroid style " << m_CentroidStyle << endl;
-	exit(-1);
+Rprintf("Clust::ComputeDist, invalid centroid style\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return 0.0;
+//	cout << "Clust::ComputeDist, invalid centroid style " << m_CentroidStyle << endl;
+//	exit(-1);
 	// Quit("Clust::ComputeDist, invalid centroid style %u", m_CentroidStyle);
 	// return (double) g_dNAN;
 	}
@@ -415,8 +431,12 @@ const ClustNode &Clust::GetNode(unsigned uNodeIndex) const
 	{
 	if (uNodeIndex >= m_uNodeCount)
 	{
-		cout << "ClustNode::GetNode(" << uNodeIndex << ") " << m_uNodeCount << endl;
-		exit (-1);
+Rprintf("ClustNode::GetNode()?\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return m_Nodes[0];
+//		cout << "ClustNode::GetNode(" << uNodeIndex << ") " << m_uNodeCount << endl;
+//		exit (-1);
 	}
 		// Quit("ClustNode::GetNode(%u) %u", uNodeIndex, m_uNodeCount);
 	return m_Nodes[uNodeIndex];
@@ -438,8 +458,12 @@ unsigned Clust::GetLeftIndex(unsigned uNodeIndex) const
 	const ClustNode &Node = GetNode(uNodeIndex);
 	if (0 == Node.m_ptrLeft)
 	{
-		cout << "Clust::GetLeftIndex: leaf" << endl;
-		exit (-1);
+Rprintf("Clust::GetLeftIndex: leaf\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return 0;
+//		cout << "Clust::GetLeftIndex: leaf" << endl;
+//		exit (-1);
 	}
 		// Quit("Clust::GetLeftIndex: leaf");
 	return Node.m_ptrLeft->m_uIndex;
@@ -450,8 +474,12 @@ unsigned Clust::GetRightIndex(unsigned uNodeIndex) const
 	const ClustNode &Node = GetNode(uNodeIndex);
 	if (0 == Node.m_ptrRight)
 	{
-		cout << "Clust::GetRightIndex: leaf" << endl;
-		exit(-1);
+Rprintf("Clust::GetRightIndex: leaf\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return 0;
+//		cout << "Clust::GetRightIndex: leaf" << endl;
+//		exit(-1);
 	}
 		// Quit("Clust::GetRightIndex: leaf");
 	return Node.m_ptrRight->m_uIndex;
@@ -467,8 +495,12 @@ void Clust::SetLeafCount(unsigned uLeafCount)
 	{
 	if (uLeafCount <= 1)
 	{
-		cout << "Clust::SetLeafCount(" << uLeafCount << ")" << endl;
-		exit (-1);
+Rprintf("Clust::SetLeafCount()\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return;
+//		cout << "Clust::SetLeafCount(" << uLeafCount << ")" << endl;
+//		exit (-1);
 	}
 		//Quit("Clust::SetLeafCount(%u)", uLeafCount);
 
@@ -491,8 +523,12 @@ unsigned Clust::VectorIndex(unsigned uIndex1, unsigned uIndex2) const
 	const unsigned uNodeCount = GetNodeCount();
 	if (uIndex1 >= uNodeCount || uIndex2 >= uNodeCount)
 	{
-		cout << "DistVectorIndex(" << uIndex1 << "," << uIndex2 << "), " << uNodeCount << endl;
-		exit (-1);
+Rprintf("Clust::VectorIndex: DistVectorIndex\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return 0;
+//		cout << "DistVectorIndex(" << uIndex1 << "," << uIndex2 << "), " << uNodeCount << endl;
+//		exit (-1);
 	}
 		//Quit("DistVectorIndex(%u,%u) %u", uIndex1, uIndex2, uNodeCount);
 	unsigned v;
@@ -536,8 +572,12 @@ const char *Clust::GetNodeName(unsigned uNodeIndex) const
 	{
 	if (!IsLeaf(uNodeIndex))
 	{
-		cout << "Clust::GetNodeName, is not leaf" << endl;
-		exit (-1);
+Rprintf("Clust::GetNodeName, is not leaf\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return m_ptrSet->GetLeafName(uNodeIndex);
+//		cout << "Clust::GetNodeName, is not leaf" << endl;
+//		exit (-1);
 	}
 		//Quit("Clust::GetNodeName, is not leaf");
 	return m_ptrSet->GetLeafName(uNodeIndex);
@@ -556,15 +596,23 @@ unsigned Clust::GetLeaf(unsigned uNodeIndex, unsigned uLeafIndex) const
 	const unsigned uLeafCount = Node.m_uSize;
 	if (uLeafIndex >= uLeafCount)
 	{
-		cout << "Clust::GetLeaf, invalid index" << endl;
-		exit (-1);
+Rprintf("Clust::GetLeaf, invalid index\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return 0;
+//		cout << "Clust::GetLeaf, invalid index" << endl;
+//		exit (-1);
 	}
 		// Quit("Clust::GetLeaf, invalid index");
 	const unsigned uIndex = Node.m_uLeafIndexes[uLeafIndex];
 	if (uIndex >= m_uNodeCount)
 	{
-		cout << "Clust::GetLeaf, index out of range" << endl;
-		exit (-1);
+Rprintf("Clust::GetLeaf, index out of range\n");
+R_FlushConsole();
+R_ProcessEvents();
+        return 0;
+//		cout << "Clust::GetLeaf, index out of range" << endl;
+//		exit (-1);
 	}
 		// Quit("Clust::GetLeaf, index out of range");
 	return uIndex;
@@ -631,7 +679,10 @@ double Clust::ComputeMetric(unsigned uIndex1, unsigned uIndex2) const
 	case JOIN_NeighborJoining:
 		return ComputeMetricNeighborJoining(uIndex1, uIndex2);
 		}
-	cout << "Clust::ComputeMetric" << endl;
+Rprintf("Clust::ComputeMetric\n");
+R_FlushConsole();
+R_ProcessEvents();
+//	cout << "Clust::ComputeMetric" << endl;
 	// Quit("Clust::ComputeMetric");
 	return 0;
 	}

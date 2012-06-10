@@ -49,7 +49,8 @@ void ODP::UpdatePatternMatrix()
 			}
 			if(upper < 0.0)
 			{
-				cout << "weightedComb " << upper << endl;
+//				cout << "weightedComb " << upper << endl;
+                ;
 			}
 			if(lower != 0.0)
 			{
@@ -75,7 +76,8 @@ void ODP::UpdateAmplitudeMatrix()
 			}
 			if(weightedComb < 0.0)
 			{
-				cout << "weightedComb " << weightedComb << endl;
+//				cout << "weightedComb " << weightedComb << endl;
+                ;
 			}
 			if(pattern->modes[j] != 0.0)
 			{

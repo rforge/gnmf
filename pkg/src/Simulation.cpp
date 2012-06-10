@@ -1,4 +1,5 @@
 #include "Simulation.h"
+#include "R.h"           // R functions
 
 using namespace std;
 
@@ -61,10 +62,10 @@ void Simulation::Run()
 	}
 	else
 	{
-//Rprintf("Simulation::Run(): error detected...\n");
-//R_FlushConsole();
-//R_ProcessEvents();
-		std::cerr << "Not a valid scheme: " << myControl.scheme << "!" << std::endl;
+Rprintf("Simulation::Run(): error detected...\n");
+R_FlushConsole();
+R_ProcessEvents();
+//		std::cerr << "Not a valid scheme: " << myControl.scheme << "!" << std::endl;
 	}
 }
 

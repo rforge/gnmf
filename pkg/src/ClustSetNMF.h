@@ -9,6 +9,7 @@ class Clust;
 #include <iostream>
 #include <string>
 #include <sstream>
+#include "R.h"           // R functions
 
 class ClustSetNMF : public ClustSet
 {
@@ -30,9 +31,13 @@ public:
 
 	virtual const char *GetLeafName(unsigned uNodeIndex)
 	{
-		std::ostringstream out;
-		out << dataSet.rowNames[uNodeIndex];
-		return out.str().c_str();
+Rprintf("ClustSetDF::GetLeafCount\n");
+R_FlushConsole();
+R_ProcessEvents();
+return 0;
+//		std::ostringstream out;
+//		out << dataSet.rowNames[uNodeIndex];
+//		return out.str().c_str();
 	}
 
 	virtual unsigned GetLeafId(unsigned uNodeIndex)
@@ -44,8 +49,12 @@ public:
 	  unsigned uRightNodeIndex, unsigned uJoinedNodeIndex,
 	  double *ptrdLeftLength, double *ptrdRightLength)
 	{
-		std::cout << "ClustSetDF::JoinNodes, should never be called" << std::endl;
-		exit (-1);
+Rprintf("ClustSetDF::JoinNodes, should never be called\n");
+R_FlushConsole();
+R_ProcessEvents();
+return;
+//		std::cout << "ClustSetDF::JoinNodes, should never be called" << std::endl;
+//		exit (-1);
 	}
 
 	virtual double ComputeDist(const Clust &C, unsigned uNodeIndex1,

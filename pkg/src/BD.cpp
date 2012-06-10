@@ -23,7 +23,8 @@ void BD::UpdatePatternMatrix()
 			}
 			if(upper < 0.0)
 			{
-				cout << "weightedComb " << upper << endl;
+//				cout << "weightedComb " << upper << endl;
+                ;
 			}
 			if(lower != 0.0)
 			{
@@ -55,7 +56,8 @@ void BD::UpdateAmplitudeMatrix()
 
 			if(upper < 0.0)
 			{
-				cout << "weightedComb " << upper << endl;
+//				cout << "weightedComb " << upper << endl;
+                ;
 			}
 			if(lower != 0.0)
 			{

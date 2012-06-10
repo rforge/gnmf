@@ -185,12 +185,18 @@ void JobHandler::VerifyArgumentList()
 	MPI_Bcast(&jobStatus, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	if(jobStatus == -1) Finalizing();
 #else
-	if(jobStatus == -1) exit(0);
+	if(jobStatus == -1)
+//    exit(0);
+    ;
 #endif
 }
 
 void JobHandler::PrintUsage()
 {
+Rprintf("JobHandler::PrintUsage()\n");
+R_FlushConsole();
+R_ProcessEvents();
+/*
 	cout << "Usage: GNMF -i input_data_matrix" << endl;
 	cout << endl;
 	cout << "General suggestion: For an input matrix containing no zero entries, it's recommended that idealization be set to 0 (default)," << endl;
@@ -216,6 +222,7 @@ void JobHandler::PrintUsage()
 	// cout << "  -hd: sparse matrix iput? default 'F'" << endl;
 	cout << "  -cts: set convergence test step size, default 20" << endl;
 	cout << "  -idealization, default 0, can be set to 0.1" << endl;
+	*/
 }
 
 void JobHandler::GetInput()
@@ -256,9 +263,9 @@ void JobHandler::GetInput()
 			string::size_type loc = value.find('-');
 			if(loc == string::npos)
 			{
-				cout << "Wrong format for -k!" << endl;
+//				cout << "Wrong format for -k!" << endl;
 				if(myCpuIndex == 0) PrintUsage();
-				exit(0);
+//				exit(0);
 			}
 			myControl->startRank = atoi( value.substr(0, loc).c_str() );
 			myControl->endRank = atoi( value.substr(loc+1).c_str() );
@@ -311,7 +318,7 @@ void JobHandler::GetInput()
 		else
 		{
 			if(myCpuIndex == 0) PrintUsage();
-			exit(0);
+//			exit(0);
 		}
 			
 	}
@@ -323,7 +330,10 @@ void JobHandler::GetInput()
 	ifstream iData(myControl->sourceFile.c_str(), ios::in);
 	if(! iData )
 	{
-		cout << myControl->sourceFile << " is not opened" << endl;
+Rprintf("JobHandler::GetInput(): myControl->sourceFile is not opened\n");
+R_FlushConsole();
+R_ProcessEvents();
+//		cout << myControl->sourceFile << " is not opened" << endl;
 	}
 	
 	iData >> *myData;
@@ -426,7 +436,10 @@ void JobHandler::DistributeSimulations()
 	for(int cpuIndex=CPU0; cpuIndex<nProcessors; cpuIndex++) 
 	{
 		// Send job to each rank
-		cout << "\tInitially send cpu" << cpuIndex << " the job unit of " << "rank:" << rank << ", chain:" << chain << ", alpha:" << alpha << endl;
+Rprintf("JobHandler::DistributeSimulations(): Initially send cpu\n");
+R_FlushConsole();
+R_ProcessEvents();
+//		cout << "\tInitially send cpu" << cpuIndex << " the job unit of " << "rank:" << rank << ", chain:" << chain << ", alpha:" << alpha << endl;
 
 		MPI_Send(&rank, 1, MPI_INT, cpuIndex, 100, MPI_COMM_WORLD);
 		MPI_Send(&chain, 1, MPI_INT, cpuIndex, 200, MPI_COMM_WORLD);
@@ -458,7 +471,7 @@ void JobHandler::DistributeSimulations()
 	}
 
 	// loop over getting new job requests until there is no more job to be done
-	cout << "nChains " <<  myControl->nChains << " rank " << rank << " alpha " << alpha <<  " chain " << chain << endl;
+//	cout << "nChains " <<  myControl->nChains << " rank " << rank << " alpha " << alpha <<  " chain " << chain << endl;
 	while(rank <= myControl->endRank) 
 	{
 		// Receive results from a note
@@ -467,10 +480,10 @@ void JobHandler::DistributeSimulations()
 		MPI_Recv(&resultIndicator, 1, MPI_INT, MPI_ANY_SOURCE, 400, MPI_COMM_WORLD, &status);
 		int cpuIndex = status.MPI_SOURCE;
 		// if(cpuIndex == 0) continue; // this way the first CPU is only used as a distributor
-		cout << "\t\tReceive request from cpu" << cpuIndex << endl;
+//		cout << "\t\tReceive request from cpu" << cpuIndex << endl;
 
 		// Send the node new job
-		cout << "\tSend cpu" << cpuIndex << " the job unit of " << "rank:" << rank << ", chain:" << chain << ", alpha:" << alpha << endl;
+//		cout << "\tSend cpu" << cpuIndex << " the job unit of " << "rank:" << rank << ", chain:" << chain << ", alpha:" << alpha << endl;
 		MPI_Send(&rank, 1, MPI_INT, cpuIndex, 100, MPI_COMM_WORLD);
 		MPI_Send(&chain, 1, MPI_INT, cpuIndex, 200, MPI_COMM_WORLD);
 		MPI_Send(&alpha, 1, MPI_DOUBLE, cpuIndex, 300, MPI_COMM_WORLD);
@@ -565,7 +578,7 @@ void JobHandler::ProcessingEvaluation()
 
 		MPI_Recv(&alpha, 1, MPI_DOUBLE, 0, 300, MPI_COMM_WORLD, &status);
 
-		cout << "\tcpu" << myCpuIndex << " working on job unit of " << "rank:" << rank << " alpha:" << alpha << endl;
+//		cout << "\tcpu" << myCpuIndex << " working on job unit of " << "rank:" << rank << " alpha:" << alpha << endl;
 
 		// do simulation
 		if(myControl->target.find_first_of("ATTERN") == 1)
@@ -587,7 +600,7 @@ void JobHandler::ProcessingEvaluation()
 void JobHandler::Finalizing() const
 {
 	MPI_Finalize();
-	exit(0);
+//	exit(0);
 }
 
 void JobHandler::Barrier() const
@@ -634,7 +647,7 @@ void JobHandler::DistributeEvaluations()
 	for(int cpuIndex=CPU0; cpuIndex<nProcessors; cpuIndex++) 
 	{
 		// Send job to each rank
-		cout << "Send " << cpuIndex << " ==> " << "rank:" << rank << ", alpha:" << alpha << endl;
+//		cout << "Send " << cpuIndex << " ==> " << "rank:" << rank << ", alpha:" << alpha << endl;
 
 		MPI_Send(&rank, 1, MPI_INT, cpuIndex, 101, MPI_COMM_WORLD);
 		MPI_Send(&alpha, 1, MPI_DOUBLE, cpuIndex, 300, MPI_COMM_WORLD);
@@ -668,10 +681,10 @@ void JobHandler::DistributeEvaluations()
 		MPI_Recv(&resultIndicator, 1, MPI_INT, MPI_ANY_SOURCE, 400, MPI_COMM_WORLD, &status);
 		int cpuIndex = status.MPI_SOURCE;
 		// if(cpuIndex == 0) continue; // this way the first CPU is only used as a distributor
-		cout << "  Receive  " << cpuIndex << " <== " << resultIndicator << endl;
+//		cout << "  Receive  " << cpuIndex << " <== " << resultIndicator << endl;
 
 		// Send the node new job
-		cout << "Send " << cpuIndex << " ==> " << "rank:" << rank << ", alpha:" << alpha << endl;
+//		cout << "Send " << cpuIndex << " ==> " << "rank:" << rank << ", alpha:" << alpha << endl;
 		MPI_Send(&rank, 1, MPI_INT, cpuIndex, 101, MPI_COMM_WORLD);
 		MPI_Send(&alpha, 1, MPI_DOUBLE, cpuIndex, 300, MPI_COMM_WORLD);
 

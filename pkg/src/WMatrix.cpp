@@ -9,7 +9,7 @@ int WMatrix::ParaProducting(
 {
 	if(nRows != (int)vec2.size())
 	{
-		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
 		return -1;
 	}
 
@@ -39,7 +39,7 @@ int WMatrix::ParaDividing(
 {
 	if(nRows != (int)vec2.size())
 	{
-		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
 		return -1;
 	}
 
@@ -71,7 +71,7 @@ int WMatrix::ParaProducting(
 {
 	if(nRows != (int)vec2.size())
 	{
-		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
 		return -1;
 	}
 
@@ -102,7 +102,7 @@ int WMatrix::ParaDividing(
 {
 	if(nRows != (int)vec2.size())
 	{
-		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different rows for vec1 and vec2!" << endl;
 		return -1;
 	}
 

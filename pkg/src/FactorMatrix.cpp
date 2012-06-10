@@ -22,7 +22,7 @@ int FactorMatrix::Multipling(
 {
 	if(nColumns != (int)vec2.size())
 	{
-		cout << "MatrixProduct has different common dimensions for vec1 and vec2!" << endl;
+//		cout << "MatrixProduct has different common dimensions for vec1 and vec2!" << endl;
 		return -1;
 	}
 
@@ -54,7 +54,7 @@ int FactorMatrix::Multipling(
 {
 	if(nColumns != (int)vec2.size() || vec2[0].size() != vec1.size())
 	{
-		cout << "MatrixProduct has different common dimensions for vec1 and vec2!" << endl;
+//		cout << "MatrixProduct has different common dimensions for vec1 and vec2!" << endl;
 		return -1;
 	}
 

@@ -18,7 +18,8 @@ void KL::UpdatePatternMatrix()
 			}
 			if(weightedComb < 0.0)
 			{
-				cout << "weightedComb " << weightedComb << endl;
+//				cout << "weightedComb " << weightedComb << endl;
+                ;
 			}
 			if(amplitude->modes[i] != 0.0)
 			{
@@ -46,7 +47,8 @@ void KL::UpdateAmplitudeMatrix()
 			}
 			if(weightedComb < 0.0)
 			{
-				cout << "weightedComb " << weightedComb << endl;
+//				cout << "weightedComb " << weightedComb << endl;
+                ;
 			}
 			if(pattern->modes[j] != 0.0)
 			{

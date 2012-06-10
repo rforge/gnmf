@@ -16,8 +16,7 @@ Date: \tab 2012-6-3\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
-%~~ An overview of how to use the package, including the most important ~~
-%~~ functions ~~
+Provides a function \code{gnmf} to perform non-negative matrix factorization.
 }
 \author{
 Jose M. Maisog, Guoli Wang, Karthik Devarajan
@@ -27,12 +26,9 @@ Maintainer: Jose M. Maisog <bravas02@gmail.com>
 Devarajan K. Nonnegative matrix factorization: an analytical and interpretive 
 tool in computational biology. PLoS Comput Biol. 2008 Jul 25;4(7):e1000029.
 
-\code{\url{http://devarajan.fccc.edu}}
+\code{http://devarajan.fccc.edu}
 }
 \keyword{ package }
-\seealso{
-\link{gnmf}
-}
 \examples{
 data(V)
 

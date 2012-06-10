@@ -56,7 +56,7 @@ int Gamma::CheckConvergency(int round)
 		errors = myData.Gamma_Div( mock->data );
 		consecutiveError = fabs(errors - myData.Gamma_Div( prevMock ));
 		totalSteps = round;
-		cout << "round " << round << " consec error " << consecutiveError << " overall error " << errors << endl;
+//		cout << "round " << round << " consec error " << consecutiveError << " overall error " << errors << endl;
 		if( consecutiveError < CONVERGETHRESHOLD)
 		{
 			converged = true;

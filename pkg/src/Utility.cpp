@@ -43,7 +43,7 @@ double Utility::PearsonCorrelation(const array1d &vector1, const array1d &vector
 {
 	if(vector1.size() != vector2.size())
 	{
-		cout << "Two vectors have different sizes in Utility::PearsonCorrelation!" << endl;
+//		cout << "Two vectors have different sizes in Utility::PearsonCorrelation!" << endl;
 		return(0.0);
 	}
 
@@ -60,7 +60,7 @@ double Utility::PearsonCorrelation(const array1d &vector1, const array1d &vector
 
 	if(qVar == 0.0 || tVar == 0.0)
 	{
-		cout << "Utility::PearsonCorrelation has zero value in the denominator!" << endl;
+//		cout << "Utility::PearsonCorrelation has zero value in the denominator!" << endl;
 		return(0.0);
 	}
 	else

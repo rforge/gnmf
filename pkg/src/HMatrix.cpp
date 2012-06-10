@@ -47,7 +47,7 @@ int HMatrix::ParaProducting(
 {
 	if(nColumns != (int)vec2[0].size())
 	{
-		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
 		return -1;
 	}
 
@@ -77,7 +77,7 @@ int HMatrix::ParaDividing(
 {
 	if(nColumns != (int)vec2[0].size())
 	{
-		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
 		return -1;
 	}
 
@@ -109,7 +109,7 @@ int HMatrix::ParaProducting(
 {
 	if(nColumns != (int)vec2[0].size())
 	{
-		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
 		return -1;
 	}
 
@@ -139,7 +139,7 @@ int HMatrix::ParaDividing(
 {
 	if(nColumns != (int)vec2[0].size())
 	{
-		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
+//		cout << "MatrixParaProduct has different columns for vec1 and vec2!" << endl;
 		return -1;
 	}
 

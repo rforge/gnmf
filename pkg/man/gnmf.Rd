@@ -1,6 +1,5 @@
 \name{gnmf}
 \alias{gnmf}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Generalized non-negative matrix factorization
 }
@@ -12,7 +11,6 @@ gnmf(V, scheme, nsteps = 2000, repeats = 20, ranks = 2, cltarget = "PATTERN",
 clscheme = "Binary", reffile = "", scaling = "F", normalizing = "F", alphas = 1,
 runtype = "simulation", cstepsize = 20, idealization = 1)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{V}{
 Input data matrix
@@ -58,34 +56,20 @@ Convergence test step size, default 20
 Default 1
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
+  \item{H}{List of pattern matrices, one for each repetition}
+  \item{W}{List of amplitude matrices, one for each repetition}}
 \references{
 Devarajan K. Nonnegative matrix factorization: an analytical and interpretive 
 tool in computational biology. PLoS Comput Biol. 2008 Jul 25;4(7):e1000029.
 
-\code{\url{http://devarajan.fccc.edu}}
+\code{http://devarajan.fccc.edu}
 }
 \author{
 Jose M. Maisog, Guoli Wang, Karthik Devarajan
 }
 \note{
 Further notes...
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-\link{gnmf-package},
-\link{V}
 }
 \examples{
 # Load sample data.
@@ -103,7 +87,5 @@ W <- result$W
 H1 <- H[[1]]
 W1 <- W[[1]]
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ Clustering }
-\keyword{ Multivariate Techniques }% __ONLY ONE__ keyword per line
+\keyword{ Multivariate Techniques }

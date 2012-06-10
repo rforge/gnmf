@@ -1,4 +1,5 @@
 #include "Evaluation.h"
+#include "R.h"           // R functions
 
 using namespace std;
 
@@ -23,16 +24,16 @@ void Evaluation::Run(const int _rank, const double _alpha)
 {
 	rank = _rank;
 	alpha = _alpha;
-
+/*
 	ostringstream outMatrix;
 	outMatrix << myControl.rootName << "." << myControl.scheme << ".k" << rank;
 	if(myControl.scheme == "Renyi") outMatrix << "_alpha" << alpha;
 	factorMatrixRootName = outMatrix.str();
-
-	ostringstream outLog;
-	outLog << myControl.rootName << "." << myControl.scheme << "_" << myControl.clustScheme << ".k" << rank;
-	if(myControl.scheme == "Renyi") outLog << "_alpha" << alpha;
-	factorMatrixLogRootName = outLog.str();
+*/
+//	ostringstream outLog;
+//	outLog << myControl.rootName << "." << myControl.scheme << "_" << myControl.clustScheme << ".k" << rank;
+//	if(myControl.scheme == "Renyi") outLog << "_alpha" << alpha;
+//	factorMatrixLogRootName = outLog.str();
 
 	//cout << "Evaluation::Run(): SetParameters... rank " << rank << " alpha " << alpha << endl;
  	SetParameters();
@@ -62,7 +63,7 @@ Rprintf("Evaluation::Run: Processing files...\n"); R_FlushConsole(); R_ProcessEv
 void Evaluation::Closing()
 {
 	ReorderConsensusMatrix();
-
+/*
 	outLOG << "rank: " << rank;
 	outLOG << " alpha: " << alpha;
 	outLOG << " cophenetic: " << cophenetic;
@@ -85,7 +86,7 @@ void Evaluation::Closing()
 	outLOG << endl;
 
 	outLOG.close();
-
+*/
 	/*
 	// start children element for evaluation parameters
 	xmlTextWriterWriteFormatElement(xmlOutLog, BAD_CAST "cophenetic", "%8.6f", cophenetic);
@@ -114,14 +115,14 @@ void Evaluation::Closing()
 
 void Evaluation::CopySaveProperties( SSMap &features, int run)
 {
-
+/*
 	outLOG << "run" << run;
 	for (SSMap::const_iterator ip=features.begin(); ip!=features.end(); ip++)
 	{
 		outLOG << " " << ip->first << " " << ip->second; 
 	}
 	outLOG << endl;
-
+*/
 	/*
 	xmlTextWriterStartElement(xmlOutLog, BAD_CAST "IndividualInfo");
 	xmlTextWriterWriteFormatAttribute(xmlOutLog, BAD_CAST "run", "%d", run);
@@ -135,11 +136,13 @@ void Evaluation::CopySaveProperties( SSMap &features, int run)
 
 void Evaluation::SaveClusterInfo() const
 {
+/*     
 	ostringstream clustFile;
 	clustFile << factorMatrixLogRootName << fileType << "clt";
 	ofstream outCLT(clustFile.str().c_str(), ios::out);
 	outCLT << ccClustData;
 	outCLT.close();
+	*/
 }
 
 void Evaluation::DoConsensusMatrix()
@@ -306,6 +309,7 @@ void Evaluation::ReorderConsensusMatrix()
 	ClustNode &Parent = myClust.m_Nodes[myClust.GetFirstCluster()];
 	GetOrderedIndex(Parent);
 	// output data points in order in the hierarchical cluster structure
+/*
 	ostringstream ordFile;
 	ordFile << factorMatrixLogRootName << fileType << "ord";
 	ofstream outORD(ordFile.str().c_str(), ios::out);
@@ -318,7 +322,7 @@ void Evaluation::ReorderConsensusMatrix()
 
 	outORD.close();
 	ordFile.clear();
-
+*/
 	// re-order rowName
 	Utility::ReOrderVector<string>(ccMatrix->rowNames, orderedSequence);
 
@@ -337,7 +341,7 @@ void Evaluation::ReorderConsensusMatrix()
 	{
 		Utility::ReOrderVector<double>(ccMatrix->data[i], orderedSequence);
 	}
-
+/*
 	// output re-ordered consensusMatrix
 	ostringstream ccFile;
 	ccFile << factorMatrixLogRootName << fileType << "cc";
@@ -360,6 +364,7 @@ void Evaluation::ReorderConsensusMatrix()
 	}
 	outPlot.close();
 	plotFile.clear();
+*/
 }
 
 void Evaluation::GetOrderedIndex(ClustNode &Parent)
@@ -574,9 +579,13 @@ void Evaluation::SelectClusters(const int nClustNodes)
 
 	if(selected != nClustNodes)
 	{
-		cout << "Evaluation::SelectClusters: selected nodes " << selected << 
-			" != designed number " << nClustNodes << "!" << endl;
-		exit(-1);
+Rprintf("Evaluation::SelectClusters: selected nodes != designed number\n");
+R_FlushConsole();
+R_ProcessEvents();
+//		cout << "Evaluation::SelectClusters: selected nodes " << selected << 
+//			" != designed number " << nClustNodes << "!" << endl;
+//		JOEexit(-1);
+        return;
 	}
 
 	// extract clust data set 
@@ -785,10 +794,11 @@ double Evaluation::MisMatchedRate(ClustDataSet &testClustData)
 		// mismatches += countSize - commons;
 		matches += commons;
 		// totalPoints += countSize;
-
+/*
 		outLOG << "   refClustData " << i << "(" << refClustData.members[ i ].size() << ")"
 			<<  " ==> testCluster " << rtMap[i] << "(" << testClustData.members[rtMap[i]].size() << ")"
 			<<  " matched " << commons << endl;
+*/
 	}
 
 	// cout << "invoke RandIndex" << endl;
