@@ -1,10 +1,10 @@
 \name{gnmf}
 \alias{gnmf}
 \title{
-Generalized non-negative matrix factorization
+Generalized non-negative matrix factorization based on Renyi Divergence
 }
 \description{
-Performs generalized non-negative matrix factorization
+Performs generalized non-negative matrix factorization based on Renyi Divergence
 }
 \usage{
 gnmf(V, scheme, nsteps = 2000, repeats = 20, ranks = 2, cltarget = "PATTERN",

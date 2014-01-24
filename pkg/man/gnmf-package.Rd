@@ -2,10 +2,10 @@
 \alias{gnmf-package}
 \docType{package}
 \title{
-Generalized non-negative matrix factorization
+Generalized non-negative matrix factorization based on Renyi Divergence
 }
 \description{
-Generalized non-negative matrix factorization
+Generalized non-negative matrix factorization based on Renyi Divergence
 }
 \details{
 \tabular{ll}{
