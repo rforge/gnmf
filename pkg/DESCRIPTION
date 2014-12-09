@@ -1,8 +1,8 @@
 Package: gnmf
 Type: Package
 Title: Generalized Non-negative Matrix Factorization Based on Renyi Divergence
-Version: 0.7
-Date: 2014-01-23
+Version: 0.8
+Date: 2014-12-08
 Author: Jose M. Maisog, Guoli Wang, Karthik Devarajan
 Maintainer: Jose M. Maisog <bravas02@gmail.com>
 Description: This package performs generalized non-negative matrix factorization based on Renyi divergence.

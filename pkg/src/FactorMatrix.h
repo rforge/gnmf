@@ -5,6 +5,13 @@
 #include <vector>
 #include <math.h>
 
+// JMM (12/7/2014): Replace call to C function RAND()
+// with call to internal R function UNIF_RAND()
+// srand(seed);
+// Reference: http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Random-numbers
+#include <R.h>
+#include <Rmath.h>
+
 class FactorMatrix :
 	public DataMatrix
 {

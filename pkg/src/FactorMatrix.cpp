@@ -4,15 +4,24 @@ using namespace std;
 
 void FactorMatrix::Initializing()
 {
-	srand(seed);
+    // JMM (12/7/2014): Replace call to C function RAND()
+    // with call to internal R function UNIF_RAND()
+	// srand(seed);
+	// Reference: http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Random-numbers
+	GetRNGstate();
 
 	for (int i=0; i<nRows; i++)
 	{
 		for (int j=0; j<nColumns; j++) 
 		{
-			data[i][j] = (double)rand()/((double)(RAND_MAX)+(double)(1));
+            // JMM (12/7/2014): Replace call to C function RAND()
+            // with call to internal R function UNIF_RAND()
+			// data[i][j] = (double)rand()/((double)(RAND_MAX)+(double)(1));
+			data[i][j] = unif_rand();
 		}
 	}
+
+    PutRNGstate();              
 }
 
 int FactorMatrix::Multipling( 
