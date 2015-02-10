@@ -4,19 +4,20 @@
 // with call to internal R function UNIF_RAND()
 //
 // Reference: http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Random-numbers
-//
-// JMM (2/8/2015): Addressing handling of R headers properly.
-// Enclose in EXTERN "C" statement, do not include RMATH.h header file --
-// R.h is apparently all that is necessary.
-extern "C" {
-    #include <R.h>
-}
 
 #include "DataMatrix.h"
 #include "CMatrix.h"
 #include "ClustDataSet.h"
 #include <vector>
 #include <math.h>
+//
+// JMM (2/8/2015): Addressing handling of R headers.
+// Enclose in EXTERN "C" statement, do not include RMATH.h header file --
+// R.h is apparently all that is necessary.
+#define R_NO_REMAP
+extern "C" {
+    #include <R.h>
+}
 
 class FactorMatrix :
 	public DataMatrix
