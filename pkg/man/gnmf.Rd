@@ -1,10 +1,10 @@
 \name{gnmf}
 \alias{gnmf}
 \title{
-Generalized non-negative matrix factorization based on Renyi Divergence
+Generalized Non-negative Matrix Factorization Based on Renyi Divergence
 }
 \description{
-Performs generalized non-negative matrix factorization based on Renyi Divergence
+This function performs generalized non-negative matrix factorization based on Renyi divergence.
 }
 \usage{
 gnmf(V, scheme, nsteps = 2000, repeats = 20, ranks = 2, cltarget = "PATTERN",
@@ -64,7 +64,7 @@ Devarajan K. Nonnegative matrix factorization: an analytical and interpretive
 tool in computational biology. PLoS Comput Biol. 2008 Jul 25;4(7):e1000029.
 
 
-Devarajan, K., Wang, G.,  Ebrahimi, N. (2011). A unified approach to nonnegative matrix factorization and probabilistic latent semantic indexing, (July 2011). Cobra Preprint Series. Working Paper 80. \url{http://biostats.bepress.com/COBRA/Art80}.
+Devarajan, K., Wang, G.,  Ebrahimi, N. (2011). A unified approach to nonnegative matrix factorization and probabilistic latent semantic indexing, (July 2011). Cobra Preprint Series. Working Paper 80. \url{http://biostats.bepress.com/cobra/art80}.
 
 \code{http://devarajan.fccc.edu}
 }
