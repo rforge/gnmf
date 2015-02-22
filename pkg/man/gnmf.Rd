@@ -4,7 +4,8 @@
 Generalized Non-negative Matrix Factorization Based on Renyi Divergence
 }
 \description{
-This function performs generalized non-negative matrix factorization based on Renyi divergence.
+Performs generalized non-negative matrix factorization based on Renyi divergence,
+as described in Devarajan et al., 2011.
 }
 \usage{
 gnmf(V, scheme, nsteps = 2000, repeats = 20, ranks = 2, cltarget = "PATTERN",

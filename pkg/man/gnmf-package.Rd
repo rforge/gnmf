@@ -5,7 +5,8 @@
 Generalized Non-negative Matrix Factorization Based on Renyi Divergence
 }
 \description{
-This package performs generalized non-negative matrix factorization based on Renyi divergence.
+Provides a function \code{gnmf}, which performs generalized non-negative matrix factorization based on Renyi divergence
+as described in Devarajan et al., 2011.
 }
 \details{
 \tabular{ll}{
@@ -16,7 +17,7 @@ Date: \tab 2012-6-3\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
-This package provides a function \code{gnmf} to perform non-negative matrix factorization.
+A function \code{gnmf} is provided to perform non-negative matrix factorization.
 }
 \author{
 Jose M. Maisog, Guoli Wang, Karthik Devarajan

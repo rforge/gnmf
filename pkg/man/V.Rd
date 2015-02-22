@@ -5,7 +5,7 @@
 Example 50 x 10 Matrix
 }
 \description{
-This matrix is sample data for illustrating the use of the \code{gnmf} function.
+Sample data for illustrating the use of the \code{gnmf} function.
 }
 \examples{
 data(V)

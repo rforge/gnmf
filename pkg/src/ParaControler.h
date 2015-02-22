@@ -98,6 +98,8 @@ public:
 		this->consecutiveError = 0;
 		this->Wsparseness      = 0;
 		this->Hsparseness      = 0;
+		
+		this->oneStepFlag      = true; // JMM : 2/22/2015 : Initialize ONESTEPFLAG to TRUE.
 	}
 	// */
 
