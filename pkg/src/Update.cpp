@@ -4,14 +4,14 @@ using namespace std;
 
 // based on NMF divergence measurement, the update rule for pattern matrix is:
 //
-//             /                                      \
+//             -                                      -
 //             |    /         D(k, j)    \            |
 //             |sum | ------------------ | * A(k, i)  |
 //             | k  \ sum (A(k,l)P(l, j) /            |
 //  P(i, j) *= | ------------------------------------ |
 //             |                sum A(k, i)           |
 //             |                 k                    |
-//             \                                     /
+//             -                                      -
 //
 // so the two "sum(k)" can be calculated in advance, because they only dependent on one of
 // the index of the to-be-updated element of pattern matrix.
