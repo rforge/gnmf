@@ -67,7 +67,7 @@ tool in computational biology. PLoS Comput Biol. 2008 Jul 25;4(7):e1000029.
 
 Devarajan, K., Wang, G.,  Ebrahimi, N. (2011). A unified approach to nonnegative matrix factorization and probabilistic latent semantic indexing, (July 2011). Cobra Preprint Series. Working Paper 80. \url{http://biostats.bepress.com/cobra/art80}.
 
-\code{http://devarajan.fccc.edu}
+URL: \code{http://devarajan.fccc.edu}
 }
 \author{
 Jose M. Maisog, Guoli Wang, Karthik Devarajan

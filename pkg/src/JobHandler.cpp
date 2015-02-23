@@ -376,7 +376,13 @@ R_ProcessEvents();
 	}
 	else
 	{
-		refClustData = 0;
+        // JMM : 2/22/2015 : Instantiate a CLUSTDATASET rather than setting REFCLUSTDATA to 0.
+        // Otherwise, CLANG memtest generates a runtime error
+        // "reference binding of null pointer of type 'const ClustDataSet'"
+        // in Simulation.cpp, member function Simulation::Run_KL() (line 91):
+        // myUpdate.Run( *myRefClust );
+//		refClustData = 0;
+		refClustData = new ClustDataSet();
 	}
 }
 
