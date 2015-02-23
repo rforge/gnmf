@@ -1,7 +1,7 @@
 \name{gnmf}
 \alias{gnmf}
 \title{
-Generalized Non-negative Matrix Factorization Based on Renyi Divergence
+Generalized Non-Negative Matrix Factorization Based on Renyi Divergence
 }
 \description{
 Performs generalized non-negative matrix factorization based on Renyi divergence,

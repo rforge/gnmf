@@ -2,7 +2,7 @@
 \alias{gnmf-package}
 \docType{package}
 \title{
-Generalized Non-negative Matrix Factorization Based on Renyi Divergence
+Generalized Non-Negative Matrix Factorization Based on Renyi Divergence
 }
 \description{
 Provides a function \code{gnmf}, which performs generalized non-negative matrix factorization based on Renyi divergence
