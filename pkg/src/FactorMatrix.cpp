@@ -4,8 +4,8 @@ using namespace std;
 
 void FactorMatrix::Initializing()
 {
-    // JMM (12/7/2014): Replace call to C function RAND()
-    // with call to internal R function UNIF_RAND()
+    // JMM (12/7/2014): Replace call to system random number generator
+    // with call to internal R function
 	// Reference: http://cran.r-project.org/doc/manuals/r-release/R-exts.html#Random-numbers
 	GetRNGstate();
 
@@ -13,9 +13,8 @@ void FactorMatrix::Initializing()
 	{
 		for (int j=0; j<nColumns; j++) 
 		{
-            // JMM (12/7/2014): Replace call to C function RAND()
-            // with call to internal R function UNIF_RAND()
-			// data[i][j] = (double)rand()/((double)(RAND_MAX)+(double)(1));
+            // JMM (12/7/2014): Replace call to system random number generator
+            // with call to internal R function
 			data[i][j] = unif_rand();
 		}
 	}

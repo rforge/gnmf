@@ -22,8 +22,11 @@ public:
 		: FactorMatrix( _matrix )
 	{}
 
-	~WMatrix(void) {}
-
+	// Declare destructor virtual to avoid compiler ambiguity.
+	virtual ~WMatrix(void) {
+		if(connectivity != 0) delete connectivity;
+		if(realConnet != 0) delete realConnet;
+	}
 
 	void Normalizing( const array1d & );
 	void GetModes();

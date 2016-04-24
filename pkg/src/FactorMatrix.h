@@ -51,8 +51,9 @@ public:
 	FactorMatrix(const DataMatrix & matrix )
 		: DataMatrix(matrix)
 	{}
-
-	~FactorMatrix(void) 
+	
+	// Declare destructor virtual to avoid compiler ambiguity.
+	virtual ~FactorMatrix(void) 
 	{
 		if(connectivity != 0) delete connectivity;
 		if(realConnet != 0) delete realConnet;

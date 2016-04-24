@@ -31,13 +31,10 @@ public:
 
 	virtual const char *GetLeafName(unsigned uNodeIndex)
 	{
-Rprintf("ClustSetDF::GetLeafCount\n");
-R_FlushConsole();
-R_ProcessEvents();
-return 0;
-//		std::ostringstream out;
-//		out << dataSet.rowNames[uNodeIndex];
-//		return out.str().c_str();
+		Rprintf("ClustSetDF::GetLeafCount (virtual) was called\n");
+		R_FlushConsole();
+		R_ProcessEvents();
+		return 0;
 	}
 
 	virtual unsigned GetLeafId(unsigned uNodeIndex)
@@ -49,12 +46,10 @@ return 0;
 	  unsigned uRightNodeIndex, unsigned uJoinedNodeIndex,
 	  double *ptrdLeftLength, double *ptrdRightLength)
 	{
-Rprintf("ClustSetDF::JoinNodes, should never be called\n");
-R_FlushConsole();
-R_ProcessEvents();
-return;
-//		std::cout << "ClustSetDF::JoinNodes, should never be called" << std::endl;
-//		exit (-1);
+		Rprintf("ClustSetDF::JoinNodes (virtual), should never be called\n");
+		R_FlushConsole();
+		R_ProcessEvents();
+		return;
 	}
 
 	virtual double ComputeDist(const Clust &C, unsigned uNodeIndex1,

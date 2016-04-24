@@ -62,23 +62,18 @@ void Clust::Create(ClustSet &Set, CLUSTER Method)
 		break;
 
 	default:
-//		cout << "Clust::Create, invalid method " << Method << endl;
-//		exit (-1);
-Rprintf("Clust::Create, invalid method\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::Create: Method noit handled, invalid method\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return;	
-		// Quit("Clust::Create, invalid method %d", Method);
 	}
 
 	if (m_uLeafCount <= 1)
 	{
-Rprintf("Clust::Create, no leaves\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::Create: m_uLeafCount <= 1, no leaves\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return;
-//		cout << "Clust::Create, no leaves" << endl;
-//		exit (-1);
 	}
 	// Quit("Clust::Create: no leaves");
 
@@ -224,13 +219,10 @@ void Clust::ChooseJoin(unsigned *ptruLeftIndex, unsigned *ptruRightIndex,
 		  ptrdRightLength);
 		return;
 		}
-Rprintf("Clust::ChooseJoin, Invalid join style\n");
-R_FlushConsole();
-R_ProcessEvents();
-        return;
-//	cout << "Clust::ChooseJoin, Invalid join style " << m_JoinStyle << endl;
-//	exit(-1);
-	// Quit("Clust::ChooseJoin, Invalid join style %u", m_JoinStyle);
+	Rprintf("Clust::ChooseJoin: m_JoinStyle not handled, Invalid join style\n");
+	R_FlushConsole();
+	R_ProcessEvents();
+    return;
 	}
 
 // Choose node pair to be merged in next step by Nearest Neighbor scheme
@@ -355,14 +347,10 @@ double Clust::ComputeDist(unsigned uNewNodeIndex, unsigned uNodeIndex)
 	case LINKAGE_NeighborJoining:
 		return ComputeDistNeighborJoining(uNewNodeIndex, uNodeIndex);
 		}
-Rprintf("Clust::ComputeDist, invalid centroid style\n");
-R_FlushConsole();
-R_ProcessEvents();
-        return 0.0;
-//	cout << "Clust::ComputeDist, invalid centroid style " << m_CentroidStyle << endl;
-//	exit(-1);
-	// Quit("Clust::ComputeDist, invalid centroid style %u", m_CentroidStyle);
-	// return (double) g_dNAN;
+	Rprintf("Clust::ComputeDist: m_CentroidStyle not handled, invalid centroid style\n");
+	R_FlushConsole();
+	R_ProcessEvents();
+    return 0.0;
 	}
 
 double Clust::ComputeDistMinLinkage(unsigned uNewNodeIndex, unsigned uNodeIndex)
@@ -431,14 +419,11 @@ const ClustNode &Clust::GetNode(unsigned uNodeIndex) const
 	{
 	if (uNodeIndex >= m_uNodeCount)
 	{
-Rprintf("ClustNode::GetNode()?\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("ClustNode::GetNode()?\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return m_Nodes[0];
-//		cout << "ClustNode::GetNode(" << uNodeIndex << ") " << m_uNodeCount << endl;
-//		exit (-1);
 	}
-		// Quit("ClustNode::GetNode(%u) %u", uNodeIndex, m_uNodeCount);
 	return m_Nodes[uNodeIndex];
 	}
 
@@ -458,14 +443,11 @@ unsigned Clust::GetLeftIndex(unsigned uNodeIndex) const
 	const ClustNode &Node = GetNode(uNodeIndex);
 	if (0 == Node.m_ptrLeft)
 	{
-Rprintf("Clust::GetLeftIndex: leaf\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::GetLeftIndex: 0 == Node.m_ptrLeft, no leaf\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return 0;
-//		cout << "Clust::GetLeftIndex: leaf" << endl;
-//		exit (-1);
 	}
-		// Quit("Clust::GetLeftIndex: leaf");
 	return Node.m_ptrLeft->m_uIndex;
 	}
 
@@ -474,14 +456,11 @@ unsigned Clust::GetRightIndex(unsigned uNodeIndex) const
 	const ClustNode &Node = GetNode(uNodeIndex);
 	if (0 == Node.m_ptrRight)
 	{
-Rprintf("Clust::GetRightIndex: leaf\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::GetRightIndex: 0 == Node.m_ptrRight, no leaf\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return 0;
-//		cout << "Clust::GetRightIndex: leaf" << endl;
-//		exit(-1);
 	}
-		// Quit("Clust::GetRightIndex: leaf");
 	return Node.m_ptrRight->m_uIndex;
 	}
 
@@ -495,14 +474,11 @@ void Clust::SetLeafCount(unsigned uLeafCount)
 	{
 	if (uLeafCount <= 1)
 	{
-Rprintf("Clust::SetLeafCount()\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::SetLeafCount(): uLeafCount <= 1, non-positive leaf count\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return;
-//		cout << "Clust::SetLeafCount(" << uLeafCount << ")" << endl;
-//		exit (-1);
 	}
-		//Quit("Clust::SetLeafCount(%u)", uLeafCount);
 
 	m_uLeafCount = uLeafCount;
 	const unsigned uNodeCount = GetNodeCount();
@@ -523,14 +499,12 @@ unsigned Clust::VectorIndex(unsigned uIndex1, unsigned uIndex2) const
 	const unsigned uNodeCount = GetNodeCount();
 	if (uIndex1 >= uNodeCount || uIndex2 >= uNodeCount)
 	{
-Rprintf("Clust::VectorIndex: DistVectorIndex\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::VectorIndex: uIndex1 >= uNodeCount or uIndex2 >= uNodeCount\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return 0;
-//		cout << "DistVectorIndex(" << uIndex1 << "," << uIndex2 << "), " << uNodeCount << endl;
-//		exit (-1);
 	}
-		//Quit("DistVectorIndex(%u,%u) %u", uIndex1, uIndex2, uNodeCount);
+
 	unsigned v;
 	if (uIndex1 >= uIndex2)
 		v = uIndex2 + (uIndex1*(uIndex1 - 1))/2;
@@ -572,14 +546,11 @@ const char *Clust::GetNodeName(unsigned uNodeIndex) const
 	{
 	if (!IsLeaf(uNodeIndex))
 	{
-Rprintf("Clust::GetNodeName, is not leaf\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::GetNodeName: uNodeIndex is not leaf\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return m_ptrSet->GetLeafName(uNodeIndex);
-//		cout << "Clust::GetNodeName, is not leaf" << endl;
-//		exit (-1);
 	}
-		//Quit("Clust::GetNodeName, is not leaf");
 	return m_ptrSet->GetLeafName(uNodeIndex);
 	}
 
@@ -596,25 +567,20 @@ unsigned Clust::GetLeaf(unsigned uNodeIndex, unsigned uLeafIndex) const
 	const unsigned uLeafCount = Node.m_uSize;
 	if (uLeafIndex >= uLeafCount)
 	{
-Rprintf("Clust::GetLeaf, invalid index\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::GetLeaf: uLeafIndex >= uLeafCount, invalid index\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return 0;
-//		cout << "Clust::GetLeaf, invalid index" << endl;
-//		exit (-1);
 	}
-		// Quit("Clust::GetLeaf, invalid index");
+
 	const unsigned uIndex = Node.m_uLeafIndexes[uLeafIndex];
 	if (uIndex >= m_uNodeCount)
 	{
-Rprintf("Clust::GetLeaf, index out of range\n");
-R_FlushConsole();
-R_ProcessEvents();
+		Rprintf("Clust::GetLeaf: uIndex >= m_uNodeCount, index out of range\n");
+		R_FlushConsole();
+		R_ProcessEvents();
         return 0;
-//		cout << "Clust::GetLeaf, index out of range" << endl;
-//		exit (-1);
 	}
-		// Quit("Clust::GetLeaf, index out of range");
 	return uIndex;
 	}
 
@@ -679,11 +645,9 @@ double Clust::ComputeMetric(unsigned uIndex1, unsigned uIndex2) const
 	case JOIN_NeighborJoining:
 		return ComputeMetricNeighborJoining(uIndex1, uIndex2);
 		}
-Rprintf("Clust::ComputeMetric\n");
-R_FlushConsole();
-R_ProcessEvents();
-//	cout << "Clust::ComputeMetric" << endl;
-	// Quit("Clust::ComputeMetric");
+	Rprintf("Clust::ComputeMetric: m_JoinStyle not handled\n");
+	R_FlushConsole();
+	R_ProcessEvents();
 	return 0;
 	}
 
