@@ -75,7 +75,12 @@ void Simulation::Run_ED()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -86,7 +91,12 @@ void Simulation::Run_KL()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 //Rprintf("Simulation::Run_KL(): about to invoke myUpdate.Run()...\n"); R_FlushConsole(); R_ProcessEvents();
 	myUpdate.Run( *myRefClust );
 }
@@ -98,7 +108,12 @@ void Simulation::Run_BD()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -109,7 +124,12 @@ void Simulation::Run_NBD()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -119,7 +139,12 @@ void Simulation::Run_Pareto()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -129,7 +154,12 @@ void Simulation::Run_InverseLink_GammaKL()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -139,7 +169,12 @@ void Simulation::Run_Gamma()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -151,7 +186,12 @@ void Simulation::Run_Renyi()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 //Rprintf("Simulation::Run_Renyi(): about to invoke myUpdate.Run()...\n"); R_FlushConsole(); R_ProcessEvents();
 	myUpdate.Run( *myRefClust );
 }
@@ -162,7 +202,12 @@ void Simulation::Run_GammaJD()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -172,7 +217,12 @@ void Simulation::Run_GammaKL()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -182,7 +232,12 @@ void Simulation::Run_DivComb()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -191,8 +246,12 @@ void Simulation::Run_Div2()
 	Div2 myUpdate(myData, myControl );
 	myUpdate.rank = rank;
 	// myUpdate.alpha = alpha;
-	myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }
 
@@ -202,6 +261,11 @@ void Simulation::Run_ODP()
 	myUpdate.rank = rank;
 	myUpdate.alpha = alpha;
 	// myUpdate.chain = chain;
-	if(! myControl.oneStepFlag) myUpdate.chain = chain;
+	// myUpdate.chain is BOOL, but chain is int.
+	// Handle this inconsistency.
+	if (!myControl.oneStepFlag) {
+		if (chain == 0) { myUpdate.chain = false; }
+		else { myUpdate.chain = true; }
+	}
 	myUpdate.Run( *myRefClust );
 }

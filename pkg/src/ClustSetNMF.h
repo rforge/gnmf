@@ -24,12 +24,17 @@ public:
 	{
 	}
 
-	virtual unsigned GetLeafCount()
+	// An object of class ClustSetNMF is instantiated in Evaluation::IndHC() and in Evaluation::HierarchCustering()
+	// CLANG is complaining that an Abstract Class cannot be instantiated.
+	// To avoid this problem, do NOT declare GetLeafCount(), GetLeafName(unsigned uNodeIndex),
+	// GetLeafId(unsigned uNodeIndex), or ComputeDist() as virtual.
+	// No other classes appear to be derived from this class, so this should not cause a problem.
+    unsigned GetLeafCount()
 	{
 		return static_cast<unsigned>( dataSet.nRows ); // (unsigned)()
 	}
 
-	virtual const char *GetLeafName(unsigned uNodeIndex)
+	const char *GetLeafName(unsigned uNodeIndex)
 	{
 		Rprintf("ClustSetDF::GetLeafCount (virtual) was called\n");
 		R_FlushConsole();
@@ -37,11 +42,11 @@ public:
 		return 0;
 	}
 
-	virtual unsigned GetLeafId(unsigned uNodeIndex)
+	unsigned GetLeafId(unsigned uNodeIndex)
 	{
 		return uNodeIndex;
 	}
-
+/*
 	virtual void JoinNodes(const Clust &C, unsigned uLeftNodeIndex,
 	  unsigned uRightNodeIndex, unsigned uJoinedNodeIndex,
 	  double *ptrdLeftLength, double *ptrdRightLength)
@@ -51,8 +56,8 @@ public:
 		R_ProcessEvents();
 		return;
 	}
-
-	virtual double ComputeDist(const Clust &C, unsigned uNodeIndex1,
+*/
+	double ComputeDist(const Clust &C, unsigned uNodeIndex1,
 	  unsigned uNodeIndex2)
 	{
 		return (1.0 - dataSet.data[uNodeIndex1][uNodeIndex2]);
