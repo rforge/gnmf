@@ -24,8 +24,13 @@
 // There, it is written: "Most R header files can be included within C++ programs but
 // they should not be included within an extern "C" block (as they include system headers)."
 // The footnote adds: "Even including C system headers in such a block has caused compilation errors."
-#define R_NO_REMAP
-#include <R.h>
+//
+// JMM (7/10/2016): Do not include R include files in GNMF header files, because sometimes
+// GNMF header files include other GNMF header files. This makes it difficult to ensure
+// that R header files are included after GNMF header files. It is probably best to just
+// include R header files directly in the CPP files where they are used.
+//#define R_NO_REMAP
+//#include <R.h>
 
 class FactorMatrix :
 	public DataMatrix

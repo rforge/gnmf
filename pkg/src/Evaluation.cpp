@@ -1,4 +1,10 @@
 #include "Evaluation.h"
+
+// JMM (7/10/2016): Do not include R include files in GNMF header files, because sometimes
+// GNMF header files include other GNMF header files. This makes it difficult to ensure
+// that R header files are included after GNMF header files. It is probably best to just
+// include R header files directly in the CPP files where they are used.
+#define R_NO_REMAP
 #include "R.h"           // R functions
 
 using namespace std;

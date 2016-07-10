@@ -1,4 +1,11 @@
 #include "HEvaluation.h"
+
+// JMM (7/10/2016): Define R_NO_REMAP
+// Reference: First few paragraphs in in Section 6 The R API: entry points for C code
+// in the online documentation for "Writing R Extensions".
+// Also see email from Prof. B. Ripley sent 7/10/2016
+// at 3:58 AM entitled "CRAN packages failing to install with modern C++"
+#define R_NO_REMAP
 #include "R.h"
 
 using namespace std;

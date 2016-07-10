@@ -1,6 +1,14 @@
+#include "JobHandler.h"  // JobHandler
+
+// JMM (7/10/2016): Move INCLUDE for R header files
+// AFTER system headers. 
+// Reference: First few paragraphs in in Section 6 The R API: entry points for C code
+// in the online documentation for "Writing R Extensions".
+// Also see email from Prof. B. Ripley sent 7/10/2016
+// at 3:58 AM entitled "CRAN packages failing to install with modern C++"
+#define R_NO_REMAP
 #include "R.h"           // R functions
 #include "Rmath.h"       // Rmath
-#include "JobHandler.h"  // JobHandler
 
 //-----------------------------------------------------------------------------
 //- This file defines TWO functions.

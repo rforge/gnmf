@@ -9,7 +9,12 @@ class Clust;
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "R.h"           // R functions
+
+// JMM (7/10/2016): Do not include R include files in GNMF header files, because sometimes
+// GNMF header files include other GNMF header files. This makes it difficult to ensure
+// that R header files are included after GNMF header files. It is probably best to just
+// include R header files directly in the CPP files where they are used.
+//#include "R.h"           // R functions
 
 class ClustSetNMF : public ClustSet
 {
