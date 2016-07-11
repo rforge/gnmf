@@ -1,5 +1,7 @@
 #include "BD.h"
 
+// JMM (7/11/2016): R header included in BD.h.
+
 using namespace std;
 
 void BD::UpdatePatternMatrix()
